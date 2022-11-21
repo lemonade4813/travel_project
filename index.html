@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="src/css/reset.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <h1 class ="title">Carpe Diem</h1>
+    <nav class="headerNav">
+        <ul>
+            <li><a href ="#">로그인</a></li>
+            <li><a href ="#">회원가입</a></li>
+            <li><a href ="#">언어선택</a></li>  
+        </ul>
+    </nav>
+    <nav class="mainmenu">
+        <ul>
+            <li class="dropdown">
+                <div class="dropdown-menu">회사소개</div>
+                <div class="dropdown-content">
+                    <a href="#">회사소개</a>
+                    <a href="#">Menu1-2</a>
+                    <a href="#">Menu1-3</a>
+                    <a href="#">Menu1-4</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <div class="dropdown-menu">호텔예약</div>
+                <div class="dropdown-content">
+                    <a href="#">Menu2-1</a>
+                    <a href="#">Menu2-2</a>
+                    <a href="#">Menu2-3</a>
+                    <a href="#">Menu2-4</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <div class="dropdown-menu">식사예약</div>
+                <div class="dropdown-content">
+                    <a href="#">Menu3-1</a>
+                    <a href="#">Menu3-2</a>
+                    <a href="#">Menu3-3</a>
+                    <a href="#">Menu3-4</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <div class="dropdown-menu">환율정보</div>
+            </li>
+            <li class="dropdown">
+                <div class="dropdown-menu">항공권 예약</div>
+                <div class="dropdown-content">
+                    <a href="#">Menu3-1</a>
+                    <a href="#">Menu3-2</a>
+                    <a href="#">Menu3-3</a>
+                    <a href="#">Menu3-4</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <div class="dropdown-menu">내 예약정보</div>
+            </li>
+        </ul>
+    </nav>
+  </header>
+  <div class="mypic">
+  </div>
+  <form id="form">
+    <input type="text" name="name" value="Jayden">
+    <input type="text" name="content" value="Lee">
+    <input type="file" name="file">
+    <input type="submit">
+  </form>
+</body>
+<script>
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const payload = new FormData(form);
+
+      fetch('http://localhost:4000/add', {
+        method: 'POST',
+        body: payload,
+      })
+      .then(res => res.json())
+      .then(data => console.log(data));
+    });
+  </script>
+<script src="src/js/index.js"></script>
+</html>
