@@ -24,7 +24,7 @@
             <li class="dropdown">
                 <div class="dropdown-menu">회사소개</div>
                 <div class="dropdown-content">
-                    <a href="#">회사소개</a>
+                    <a href="/company">회사소개</a>
                     <a href="#">Menu1-2</a>
                     <a href="#">Menu1-3</a>
                     <a href="#">Menu1-4</a>
@@ -33,7 +33,7 @@
             <li class="dropdown">
                 <div class="dropdown-menu">호텔예약</div>
                 <div class="dropdown-content">
-                    <a href="#">Menu2-1</a>
+                    <a href="/hotel" data-link>Menu2-1</a>
                     <a href="#">Menu2-2</a>
                     <a href="#">Menu2-3</a>
                     <a href="#">Menu2-4</a>
@@ -42,7 +42,7 @@
             <li class="dropdown">
                 <div class="dropdown-menu">식사예약</div>
                 <div class="dropdown-content">
-                    <a href="#">Menu3-1</a>
+                    <a href="/company" data-link>Menu3-1</a>
                     <a href="#">Menu3-2</a>
                     <a href="#">Menu3-3</a>
                     <a href="#">Menu3-4</a>
@@ -68,6 +68,7 @@
   </header>
   <div class="mypic">
   </div>
+  <div id ="root"></div>
   <form id="form">
     <input type="text" name="name" value="Jayden">
     <input type="text" name="content" value="Lee">
@@ -75,21 +76,5 @@
     <input type="submit">
   </form>
 </body>
-<script>
-    const form = document.getElementById('form');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const payload = new FormData(form);
-
-      fetch('http://localhost:4000/add', {
-        method: 'POST',
-        body: payload,
-      })
-      .then(res => res.json())
-      .then(data => console.log(data));
-    });
-  </script>
 <script src="src/js/index.js"></script>
 </html>
