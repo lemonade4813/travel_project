@@ -19,6 +19,7 @@ form.addEventListener('submit', (e) => {
   .then(data => console.log(data));
 });
 
+
 const router = async () => {
   const routes = [
       { path: "/", view: Home },
@@ -32,6 +33,8 @@ const router = async () => {
           isMatch: route.path === location.pathname,
       };
   });
+
+  console.log(pageMatches)
   let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
 
   if (!match) {
@@ -62,6 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   router();
 });
+
+
 
 
 /*

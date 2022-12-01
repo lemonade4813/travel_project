@@ -1,4 +1,4 @@
-export default class {
+export default class NotFound {
     constructor() {
         document.title = "404 Not found";
     }

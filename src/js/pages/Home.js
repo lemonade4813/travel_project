@@ -1,4 +1,4 @@
-export default class {
+export default class Home {
     constructor() {
         document.title = "Home";
     }

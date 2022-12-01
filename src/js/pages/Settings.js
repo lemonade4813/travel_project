@@ -1,4 +1,4 @@
-export default class {
+export default class Settings {
     constructor() {
         document.title = "식사 예약";
     }
