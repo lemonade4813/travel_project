@@ -1,23 +1,11 @@
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import Hotel from "./pages/Hotel";
-import Company from "./pages/Company";
-
-
-const form = document.getElementById('form');
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const payload = new FormData(form);
-
-  fetch('http://localhost:4000/add', {
-    method: 'POST',
-    body: payload,
-  })
-  .then(res => res.json())
-  .then(data => console.log(data));
-});
+import Home from "./pages/Home.js";
+import NotFound from "./pages/NotFound.js";
+import Hotel from "./pages/Hotel.js";
+import Company from "./pages/Company.js";
+import Dining from "./pages/Dining.js";
+import Reservation from "./pages/Reservation.js";
+import Exchange from "./pages/Exchange.js";
+import Airline from "./pages/Airline.js";
 
 
 const router = async () => {
@@ -25,6 +13,11 @@ const router = async () => {
       { path: "/", view: Home },
       { path: "/hotel", view: Hotel },
       { path: "/company", view: Company },
+      { path: "/dining", view: Dining },
+      { path: "/resevation", view: Reservation },
+      { path: "/exchange", view: Exchange },
+      { path: "/airline", view: Airline },
+
   ];
 
   const pageMatches = routes.map((route) => {

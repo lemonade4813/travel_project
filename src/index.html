@@ -24,44 +24,38 @@
             <li class="dropdown">
                 <div class="dropdown-menu">회사소개</div>
                 <div class="dropdown-content">
-                    <a href="/#/company" data-link>회사소개</a>
-                    <a href="#">Menu1-2</a>
-                    <a href="#">Menu1-3</a>
-                    <a href="#">Menu1-4</a>
+                    <a href="/company" data-link>회사소개</a>
                 </div>
             </li>
             <li class="dropdown">
                 <div class="dropdown-menu">호텔예약</div>
                 <div class="dropdown-content">
-                    <a href="/#/hotel" data-link>Menu2-1</a>
-                    <a href="#">Menu2-2</a>
-                    <a href="#">Menu2-3</a>
-                    <a href="#">Menu2-4</a>
+                    <a href="/hotel" data-link>예약 조회 및 취소</a>
                 </div>
             </li>
             <li class="dropdown">
                 <div class="dropdown-menu">식사예약</div>
                 <div class="dropdown-content">
-                    <a href="/#/company" data-link>Menu3-1</a>
-                    <a href="#">Menu3-2</a>
-                    <a href="#">Menu3-3</a>
-                    <a href="#">Menu3-4</a>
+                    <a href="/dining" data-link>예약 조회 및 취소</a>
                 </div>
             </li>
             <li class="dropdown">
                 <div class="dropdown-menu">환율정보</div>
+                <div class="dropdown-content">
+                    <a href="/exchange" data-link>환율 정보</a>
+                </div>
             </li>
             <li class="dropdown">
                 <div class="dropdown-menu">항공권 예약</div>
                 <div class="dropdown-content">
-                    <a href="#">Menu3-1</a>
-                    <a href="#">Menu3-2</a>
-                    <a href="#">Menu3-3</a>
-                    <a href="#">Menu3-4</a>
+                    <a href="/airline">예약 조회 및 취소</a>
                 </div>
             </li>
             <li class="dropdown">
                 <div class="dropdown-menu">내 예약정보</div>
+                <div class="dropdown-content">
+                    <a href="/resevation">예약 정보 조회</a>
+                </div>
             </li>
         </ul>
     </nav>
@@ -69,6 +63,12 @@
   <div class="mypic">
   </div>
   <div id ="root"></div>
+  <form id="form">
+    <input type="text" name="name" value="Jayden">
+    <input type="text" name="content" value="Lee">
+    <input type="file" name="file">
+    <input type="submit">
+  </form>
 </body>
-<script type="module" src="src/js/index.mjs"></script>
+<script type="module" src="/src/js/index.js"></script>
 </html>
