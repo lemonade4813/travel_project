@@ -2,10 +2,10 @@ import Home from "./pages/Home.js";
 import NotFound from "./pages/NotFound.js";
 import Hotel from "./pages/Hotel.js";
 import Company from "./pages/Company.js";
-import Dining from "./pages/Dining.js";
-import Reservation from "./pages/Reservation.js";
+import Dining from "./pages/Dining.js"
 import Exchange from "./pages/Exchange.js";
 import Airline from "./pages/Airline.js";
+import Reservation from "./pages/Reservation.js";
 
 
 const router = async () => {
@@ -14,10 +14,9 @@ const router = async () => {
       { path: "/hotel", view: Hotel },
       { path: "/company", view: Company },
       { path: "/dining", view: Dining },
-      { path: "/resevation", view: Reservation },
       { path: "/exchange", view: Exchange },
       { path: "/airline", view: Airline },
-
+      { path :"/reservation",view : Reservation}
   ];
 
   const pageMatches = routes.map((route) => {
