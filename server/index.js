@@ -7,7 +7,7 @@ const cors = require('cors');
 //app.use(bodyParser().json())
 const multer = require('multer')
 //const upload = multer({dest : 'uploads/'})
-const Post = require('../server/post')
+const Hotel = require('./hotel')
 const path = require("path");
 
 app.use(express.urlencoded({extended:true}));
@@ -59,14 +59,17 @@ const upload = multer({
 //     res.send(req.body);
 //     console.log(req.body)
 //   });
-  app.use('/add', upload.single('file'), (req, res, next) => {
+  app.post('/hotel', upload.single('file'), (req, res, next) => {
     const post = {
-        name : req.body.name,
-        content : req.body.content,
+        nation : req.body.nation,
+        hotelName : req.body.hotelName,
+        address : req.body.address,
+        tel : req.body.tel,
+        roomType : req.body.roomType,
         originalFileName : req.file.originalname
     }
     
-    const doc = new Post(post)
+    const doc = new Hotel(post)
 
     doc.save(function(err, result){
         if(err){
@@ -82,6 +85,14 @@ const upload = multer({
   });
 
   
+  app.get("/hotel", (req, res)=>{
+
+    Hotel.find(function(err, hotel){
+        if(err) return res.status(500).send({error : 'database failure'});
+        res.json(hotel);
+    })
+  })
+
 
   // app.use('/add', upload.fields([{name : 'name'},{name:'surname'}]), (req, res, next) => {
   //   const {name,surname} = req.body;

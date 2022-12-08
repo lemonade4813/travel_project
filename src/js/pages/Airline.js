@@ -1,10 +1,10 @@
-export default class Airline {
+import Items from "./components/AirlineComponent.js";
+export default class Hotel {
+      
     constructor() {
-        document.title = "항공권 예약";
+      const $airline = document.querySelector('#root');
+      new Items($airline);
     }
-    async getHtml() {
-        return `
-            <h1>항공권 예약 페이지입니다.</h1>
-        `;
-    }
+  
 }
+new Hotel();

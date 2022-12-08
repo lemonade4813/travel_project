@@ -1,10 +1,10 @@
+import Items from "./components/HotelComponent.js";
 export default class Hotel {
+      
     constructor() {
-        document.title = "호텔 예약";
+      const $hotel = document.querySelector('#root');
+      new Items($hotel);
     }
-    async getHtml() {
-        return `
-            <h1>호텔 예약 페이지 입니다.</h1>
-        `;
-    }
+  
 }
+new Hotel();

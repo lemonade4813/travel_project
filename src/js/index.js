@@ -35,10 +35,10 @@ const router = async () => {
           isMatch: true,
       };
       const page = new NotFound();
-      document.querySelector("#root").innerHTML = await page.getHtml();
+//      document.querySelector("#root").innerHTML = await page.getHtml();
   } else {
       const page = new match.route.view();
-      document.querySelector("#root").innerHTML = await page.getHtml();
+//      document.querySelector("#root").innerHTML = await page.getHtml();
   }
 };
 
