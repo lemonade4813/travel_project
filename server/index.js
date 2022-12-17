@@ -94,6 +94,15 @@ const upload = multer({
   })
 
 
+  app.delete('/hotel/id',(req, res) => {
+    console.log(req.body)
+    console.log(req.params._id)
+    Hotel.deleteOne({_id:req.params.index})
+}
+)
+
+
+
   // app.use('/add', upload.fields([{name : 'name'},{name:'surname'}]), (req, res, next) => {
   //   const {name,surname} = req.body;
   //     res.send(req.body);

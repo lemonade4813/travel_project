@@ -40,7 +40,7 @@ const router = async () => {
       const page = new match.route.view();
 //      document.querySelector("#root").innerHTML = await page.getHtml();
   }
-};
+}
 
 
 window.addEventListener("popstate", () => {

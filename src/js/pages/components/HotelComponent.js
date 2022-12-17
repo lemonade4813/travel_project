@@ -26,63 +26,80 @@ export default class HotelComponent  {
     const {items} = this.state;
     console.log(items)
     return `
-      <form id="form">
-        <p>국가명</p><input type="text" name="nation">
-        <p>호텔명</p><input type="text" name="hotelName">
-        <p>주소</p><input type="text" name="address">
-        <p>전화번호</p><input type="text" name="tel">
-        <p>객실 타입<p><input type="text" name="roomType">
-        <input type="file" name="file">
-        <input type="submit">
+      <form id="hotelInfoInput">
+        <ul>
+          <li>국가명 <input type="text" name="nation"></li>
+          <li>호텔명 <input type="text" name="hotelName"></li>
+          <li>주소 <input type="text" name="address"></li>
+          <li>전화번호 <input type="text" name="tel"></li>
+          <li>객실 타입 <input type="text" name="roomType"></li>
+          <li>이미지 등록 <input type="file" name="file"><li>
+          <li><input type="submit"></li>
+        </ul>
       </form>
-      <ul>
-        ${items.map((item, key) => ` 
-          <li>${item.nation}</li>
-          <li>${item.hotelName}</li>
-          <li>${item.address}</li>
-          <li>${item.tel}</li>
-          <li>${item.roomType}</li>
-            <button class="deleteBtn" data-index="${key}">삭제</button>
-          </li>
-        `).join('')}
-      </ul>
-      <button class="addBtn">추가</button>
+      <table id ="hotelList">
+        <thead>
+          <tr>
+            <th>등록 아이디</th>
+            <th>국가명</th>
+            <th>호텔명</th>
+            <th>주소</th>
+            <th>전화번호</th>
+            <th>객실 타입</th>
+            <th>이미지</th>
+            <th>삭제 버튼</th>
+          <tr>
+          </thead>
+          <tbody>   
+          ${items.map((item, key) => ` 
+            <tr>
+            <td>${item._id}</td>
+            <td>${item.nation}</td>
+            <td>${item.hotelName}</td>
+            <td>${item.address}</td>
+            <td>${item.tel}</td>
+            <td>${item.roomType}</td>
+            <td><img src="/server/uploads/${item.originalFileName}"></td>
+            <td>
+              <button class="deleteBtn" data-index="${item._id}">삭제</button>
+            </td>
+            </tr>
+        `).join('')} 
+        </tbody>
+      <table>
       `
   }
 
   setEvent () {
-    this.target.querySelector('.addBtn').addEventListener('click', () => {
-      const { items } = this.state;
-      this.setState({ items: [ ...items, `item${items.length + 1}` ] });
-    });
-
+  
     // 삭제 버튼 이벤트 등록
     
     this.target.querySelectorAll('.deleteBtn').forEach(deleteBtn =>
-      deleteBtn.addEventListener('click', ({ target }) => {
-        const items = [ ...this.state.items ];
-        items.splice(target.dataset.index, 1);
-        this.setState({ items });
+      deleteBtn.addEventListener('click', async ({ target }) => {
+ 
+        await fetch(`http://localhost:4000/hotel/${target.dataset.index}`, {method:'DELETE'})
+        .then(res => res.json())
+        .then(data => console.log(data))
+        
+        this.setup()
       }))
 
     // 호텔 정보 등록 하기
 
-      this.target.querySelector('form').addEventListener('submit', (e) => {
+      this.target.querySelector('#hotelInfoInput').addEventListener('submit', async (e) => {
         e.preventDefault();
     
-        const payload = new FormData(form);
+        const hotelInfo = new FormData(hotelInfoInput);
     
-        fetch('http://localhost:4000/hotel', {
+        await fetch('http://localhost:4000/hotel', {
           method: 'POST',
-          body: payload,
+          body: hotelInfo,
         })
         .then(res => res.json())
         .then(data => console.log(data));
-      }
-      this.setup()
-      );
-
     
+      this.setup()
+      });
     }
 
     setState (newState) {
